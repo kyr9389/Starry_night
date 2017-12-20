@@ -1,4 +1,4 @@
-package com.example.tcp.starry_night;
+package com.example.tcp.starrynight;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -14,7 +14,7 @@ public class SplashActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         try{
-            Thread.sleep(3000);
+            Thread.sleep(2000);
         }catch (InterruptedException e) {
             e.printStackTrace();
         }

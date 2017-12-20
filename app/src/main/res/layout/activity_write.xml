@@ -1,31 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="40dp"
-        android:gravity="center"
-        android:background="@color/colorPrimaryDark"
-        android:text="글쓰기" />
+    android:layout_height="match_parent"
+    android:background="#1B0A2A">
 
     <EditText
-        android:id="@+id/editText"
-        android:layout_width="match_parent"
-        android:layout_height="450dp"
-        android:layout_marginTop="10dp"
-        android:background="@color/colorPrimaryDark"
-        android:inputType="text"
-        android:hint="무슨 생각을 하고 있나요?" />
-
-    <Button
-        android:id="@+id/putinbutton"
+        android:id="@+id/nicknameText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_person_black_24dp"
+        android:drawablePadding="20dp"
+        android:hint="닉네임"
         android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:textSize="40sp"
+        android:textColor="#D8D8D8"
+        android:textColorHint="#D8D8D8"
+        android:inputType="textPersonName"/>
+
+    <EditText
+        android:id="@+id/titleText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_title_black_24dp"
+        android:drawablePadding="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
         android:textSize="30sp"
-        android:text="별에 기록하기" />
+        android:hint="제목"
+        android:textColor="#D8D8D8"
+        android:textColorHint="#D8D8D8"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/contentText"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_marginTop="10dp"
+        android:gravity="top"
+        android:hint="무슨 생각을 하고 있나요?"
+        android:inputType="textMultiLine|textImeMultiLine"
+        android:textColor="#D8D8D8"
+        android:textColorHint="#D8D8D8"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/writeButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="10dp"
+        android:textSize="30sp"
+        android:text="흔적 남기기"/>
 </LinearLayout>

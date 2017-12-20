@@ -1,7 +1,6 @@
-package com.example.tcp.starry_night;
+package com.example.tcp.starrynight;
 
 import android.content.Context;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,7 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
+import com.example.tcp.starry_night.R;
 
 import java.util.ArrayList;
 
@@ -26,9 +25,7 @@ public class MyListAdapter extends BaseAdapter {
 
         TextView nickname_textView;
         TextView title_textView;
-        TextView date_textView;
         TextView content_textView;
-        ImageView profile_imageView;
 
     }
 
@@ -63,8 +60,6 @@ public class MyListAdapter extends BaseAdapter {
             viewholder.nickname_textView = (TextView) convertView.findViewById(R.id.nickname_textview);
             viewholder.content_textView = (TextView) convertView.findViewById(R.id.content_textview);
             viewholder.title_textView = (TextView) convertView.findViewById(R.id.title_textview);
-            viewholder.date_textView = (TextView) convertView.findViewById(R.id.date_textview);
-            viewholder.profile_imageView = (ImageView) convertView.findViewById(R.id.profile_imageview);
             convertView.setTag(viewholder);
         } else {
             viewholder = (ViewHolder)convertView.getTag();
@@ -73,8 +68,6 @@ public class MyListAdapter extends BaseAdapter {
         viewholder.nickname_textView.setText(list_itemArrayList.get(i).getNickname());
         viewholder.title_textView.setText(list_itemArrayList.get(i).getTitle());
         viewholder.content_textView.setText(list_itemArrayList.get(i).getContent());
-        viewholder.date_textView.setText(list_itemArrayList.get(i).getWrite_date().toString());
-        viewholder.profile_imageView.setImageResource(list_itemArrayList.get(i).getProfile_image());
 
         return convertView;
     }

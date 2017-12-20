@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Starry night</string>
+    <string name="app_titlebar">누군가의 별</string>
 </resources>

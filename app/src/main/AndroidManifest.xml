@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.tcp.starry_night">
-
-    <application
+    <uses-permission android:name="android.permission.INTERNET"/>
+        <application
         android:allowBackup="true"
         android:icon="@drawable/startree"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/startree"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.NoActionBar">
+        android:theme="@style/AppTheme">
 
         <activity
-            android:name=".SplashActivity"
+            android:name="com.example.tcp.starrynight.SplashActivity"
             android:theme="@style/SplashTheme"
             android:screenOrientation="portrait">
 
@@ -23,9 +22,9 @@
 
         </activity>
 
-        <activity android:name=".MainActivity">
+        <activity android:name="com.example.tcp.starrynight.MainActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name="com.example.tcp.starrynight.WriteActivity" android:screenOrientation="portrait"></activity>
 
-        </activity>
     </application>
 
 </manifest>
