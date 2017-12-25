@@ -24,6 +24,7 @@
 
         <activity android:name="com.example.tcp.starrynight.MainActivity" android:screenOrientation="portrait"></activity>
         <activity android:name="com.example.tcp.starrynight.WriteActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name="com.example.tcp.starrynight.ViewActivity" android:screenOrientation="portrait"></activity>
 
     </application>
 

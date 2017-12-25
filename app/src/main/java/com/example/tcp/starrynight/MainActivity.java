@@ -3,11 +3,14 @@ package com.example.tcp.starrynight;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -27,7 +30,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
     String myJSON;
 
@@ -35,13 +38,11 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG_NICKNAME = "nickname";
     private static final String TAG_TITLE = "title";
     private static final String TAG_CONTENT = "context";
+    private static final String TAG_NO = "no";
 
     JSONArray peoples = null;
-
     ArrayList<HashMap<String, String>> personList;
-
     ListView list;
-
     public static MyListAdapter myListAdapter;
 
 
@@ -55,6 +56,48 @@ public class MainActivity extends AppCompatActivity {
         list.setAdapter(myListAdapter);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(0xFF333366));
         getSupportActionBar().setTitle("어딘가의 별");
+
+        list.setOnItemClickListener(this);
+
+    }
+
+    public void onItemClick(AdapterView<?> parent, View v, int position, long id)  {
+
+        Log.d("data value : ", parent.getItemAtPosition(position).toString());
+        list_item data = convert(parent.getItemAtPosition(position));
+
+        // 다음 액티비티로 넘길 Bundle 데이터를 만든다.
+        Bundle extras = new Bundle();
+        extras.putString("nickname", data.getNickname());
+        extras.putString("title", data.getTitle());
+        extras.putString("content", data.getContent());
+        extras.putString("no", data.getNo());
+
+        // 인텐트를 생성한다.
+        // 컨텍스트로 현재 액티비티를, 생성할 액티비티로 ItemClickExampleNextActivity 를 지정한다.
+        Intent intent = new Intent(this, ViewActivity.class);
+
+        // 위에서 만든 Bundle을 인텐트에 넣는다.
+        intent.putExtras(extras);
+
+        // 액티비티를 생성한다.
+        startActivity(intent);
+    }
+
+    @Nullable
+    public list_item convert (Object i) {
+
+        list_item ListItem = new list_item();
+        HashMap Item = (HashMap) i;
+
+        Log.d("HashMap context - ", Item.get("context").toString());
+
+        ListItem.setContent(Item.get("context").toString());
+        ListItem.setNickname(Item.get("nickname").toString());
+        ListItem.setTitle(Item.get("title").toString());
+        ListItem.setNo(Item.get("no").toString());
+
+        return ListItem;
     }
 
     @Override
@@ -90,12 +133,14 @@ public class MainActivity extends AppCompatActivity {
                 String nickname = c.getString(TAG_NICKNAME);
                 String title = c.getString(TAG_TITLE);
                 String context = c.getString(TAG_CONTENT);
+                String no = c.getString(TAG_NO);
 
                 HashMap<String, String> persons = new HashMap<String, String>();
 
                 persons.put(TAG_NICKNAME, nickname);
                 persons.put(TAG_TITLE, title);
                 persons.put(TAG_CONTENT, context);
+                persons.put(TAG_NO, no);
 
                 personList.add(persons);
             }

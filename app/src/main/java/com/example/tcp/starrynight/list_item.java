@@ -11,11 +11,18 @@ public class list_item {
     private String nickname;
     private String title;
     private String content;
+    private String no;
 
-    public list_item(String nickname, String title, String content) {
+    public list_item()
+    {
+        super();
+    }
+
+    public list_item(String nickname, String title, String content, String no) {
         this.nickname = nickname;
         this.title = title;
         this.content = content;
+        this.no = no;
     }
 
     public String getNickname() {
@@ -38,7 +45,10 @@ public class list_item {
         return content;
     }
 
-    public void setContent(String content) {
-        this.content = content;
-    }
+    public void setContent(String content) { this.content = content; }
+
+    public String getNo() { return no; }
+
+    public void setNo(String no) { this.no = no; }
+
 }

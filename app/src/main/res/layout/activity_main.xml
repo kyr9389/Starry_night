@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#1B0A2A"
-    tools:context="com.example.tcp.starry_night.com.example.tcp.starrynight.MainActivity"
     android:weightSum="1">
+
     <ListView
         android:id="@+id/my_listView"
         android:layout_width="match_parent"
@@ -14,4 +13,5 @@
         android:layout_marginTop="10dp"
         android:stackFromBottom="false"
         />
+
 </LinearLayout>
