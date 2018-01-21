@@ -58,7 +58,6 @@ public class MyListAdapter extends BaseAdapter {
             viewholder = new ViewHolder();
 
             viewholder.nickname_textView = (TextView) convertView.findViewById(R.id.nickname_textview);
-            viewholder.content_textView = (TextView) convertView.findViewById(R.id.content_textview);
             viewholder.title_textView = (TextView) convertView.findViewById(R.id.title_textview);
             convertView.setTag(viewholder);
         } else {

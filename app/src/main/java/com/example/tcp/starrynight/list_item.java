@@ -1,7 +1,5 @@
 package com.example.tcp.starrynight;
 
-import java.util.Date;
-
 /**
  * Created by tcp on 2017-09-07.
  */

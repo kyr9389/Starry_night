@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -49,6 +50,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
         personList = new ArrayList<HashMap<String, String>>();
         getData("http://kyr9389.kuvh.kr/Data_receive.php");
@@ -66,21 +69,16 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         Log.d("data value : ", parent.getItemAtPosition(position).toString());
         list_item data = convert(parent.getItemAtPosition(position));
 
-        // 다음 액티비티로 넘길 Bundle 데이터를 만든다.
         Bundle extras = new Bundle();
         extras.putString("nickname", data.getNickname());
         extras.putString("title", data.getTitle());
         extras.putString("content", data.getContent());
         extras.putString("no", data.getNo());
 
-        // 인텐트를 생성한다.
-        // 컨텍스트로 현재 액티비티를, 생성할 액티비티로 ItemClickExampleNextActivity 를 지정한다.
         Intent intent = new Intent(this, ViewActivity.class);
 
-        // 위에서 만든 Bundle을 인텐트에 넣는다.
         intent.putExtras(extras);
 
-        // 액티비티를 생성한다.
         startActivity(intent);
     }
 
@@ -109,6 +107,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
+        if (id == R.id.action_back) {
+            finish();
+            return true;
+        }
         if (id == R.id.action_refresh) {
             list.setAdapter(null);
             getData("http://kyr9389.kuvh.kr/Data_receive.php");
@@ -150,7 +152,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             ListAdapter adapter = new SimpleAdapter(
                     MainActivity.this, personList, R.layout.item,
                     new String[]{TAG_NICKNAME, TAG_TITLE, TAG_CONTENT},
-                    new int[]{R.id.nickname_textview, R.id.title_textview, R.id.content_textview}
+                    new int[]{R.id.nickname_textview, R.id.title_textview}
             );
             list.setAdapter(adapter);
 

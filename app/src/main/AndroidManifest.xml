@@ -13,14 +13,16 @@
             android:name="com.example.tcp.starrynight.SplashActivity"
             android:theme="@style/SplashTheme"
             android:screenOrientation="portrait">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
+
+            <activity android:name="com.example.tcp.starrynight.FirstActivity"
+                android:theme="@style/Theme.AppCompat.NoActionBar"
+                android:screenOrientation="portrait">
+            </activity>
 
         <activity android:name="com.example.tcp.starrynight.MainActivity" android:screenOrientation="portrait"></activity>
         <activity android:name="com.example.tcp.starrynight.WriteActivity" android:screenOrientation="portrait"></activity>
