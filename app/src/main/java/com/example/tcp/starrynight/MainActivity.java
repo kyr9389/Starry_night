@@ -50,8 +50,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         setContentView(R.layout.activity_main);
         personList = new ArrayList<HashMap<String, String>>();
         getData("http://kyr9389.kuvh.kr/Data_receive.php");
@@ -59,6 +58,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         list.setAdapter(myListAdapter);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(0xFF333366));
         getSupportActionBar().setTitle("어딘가의 별");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_back_black_24dp);
 
         list.setOnItemClickListener(this);
 
@@ -107,7 +108,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if (id == R.id.action_back) {
+        if (id == android.R.id.home) {
             finish();
             return true;
         }

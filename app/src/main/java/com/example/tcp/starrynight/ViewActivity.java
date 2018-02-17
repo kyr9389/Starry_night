@@ -28,12 +28,14 @@ public class ViewActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         setContentView(R.layout.activity_view);
 
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(0xFF333366));
         getSupportActionBar().setTitle("누군가의 기록");
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_back_black_24dp);
 
         Intent intent = getIntent();
 
@@ -56,12 +58,11 @@ public class ViewActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if (id == R.id.action_back) {
+        if (id == android.R.id.home) {
             finish();
             return true;
         }
         if (id == R.id.action_delete) {
-            Log.d("deeebug_no. value : ", noText);
             HttpTask task = new HttpTask();
             task.execute();
             return true;
@@ -86,7 +87,6 @@ public class ViewActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String result) {
-            Log.d("deeebug_result value : ", result);
             if (result.equals("1")) {
                 Toast.makeText(getApplication(), "글이 삭제되었습니다.", Toast.LENGTH_SHORT).show();
             } else {

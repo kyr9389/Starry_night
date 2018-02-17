@@ -43,13 +43,4 @@
         android:textColor="#D8D8D8"
         android:textColorHint="#D8D8D8"
         android:textSize="20sp" />
-
-    <Button
-        android:id="@+id/writeButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:layout_marginBottom="10dp"
-        android:textSize="30sp"
-        android:text="흔적 남기기"/>
 </LinearLayout>

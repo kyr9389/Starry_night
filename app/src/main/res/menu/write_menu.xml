@@ -4,9 +4,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".MainActivity">
 
-    <item android:id="@+id/action_delete"
-        android:title="Delete"
-        android:icon="@drawable/ic_delete_black_24dp"
+    <item android:id="@+id/action_write"
+        android:title="Write"
+        android:icon="@drawable/ic_check_black_24dp"
         app:showAsAction="always"/>
 
 </menu>

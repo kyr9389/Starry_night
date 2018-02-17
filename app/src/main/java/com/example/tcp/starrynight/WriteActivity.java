@@ -5,6 +5,8 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -27,25 +29,43 @@ public class WriteActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_write);
-        Button writeButton = (Button)findViewById(R.id.writeButton);
+
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(0xFF333366));
         getSupportActionBar().setTitle("별에 기록하기");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_back_black_24dp);
 
         final EditText nicknameText = (EditText) findViewById(R.id.nicknameText);
         final EditText titleText = (EditText) findViewById(R.id.titleText);
         final EditText contentText = (EditText) findViewById(R.id.contentText);
+    }
 
-        writeButton.setOnClickListener(new Button.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (nicknameText.getText().toString().length() != 0 && titleText.getText().toString().length() != 0 && contentText.getText().toString().length() != 0) {
-                    HttpTask task = new HttpTask();
-                    task.execute();
-                }else {
-                    Toast.makeText(getApplicationContext(), "빈칸이 없는지 확인해주세요", Toast.LENGTH_SHORT).show();
-                }
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.write_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        final EditText nicknameText = (EditText) findViewById(R.id.nicknameText);
+        final EditText titleText = (EditText) findViewById(R.id.titleText);
+        final EditText contentText = (EditText) findViewById(R.id.contentText);
+
+        if (id == android.R.id.home) {
+            finish();
+            return true;
+        }
+        if (id == R.id.action_write) {
+            if (nicknameText.getText().toString().length() != 0 && titleText.getText().toString().length() != 0 && contentText.getText().toString().length() != 0) {
+                HttpTask task = new HttpTask();
+                task.execute();
+            }else {
+                Toast.makeText(getApplicationContext(), "빈칸이 없는지 확인해주세요", Toast.LENGTH_SHORT).show();
             }
-        });
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     class HttpTask extends AsyncTask<String, Void, String> {
