@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         list = (ListView) findViewById(R.id.my_listView);
         list.setAdapter(myListAdapter);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(0xFF333366));
-        getSupportActionBar().setTitle("어딘가의 별");
+        getSupportActionBar().setTitle("일상 이야기");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_back_black_24dp);
 

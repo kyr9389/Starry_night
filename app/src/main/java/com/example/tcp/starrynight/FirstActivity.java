@@ -4,9 +4,12 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.style.TtsSpan;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.example.tcp.starry_night.R;
 
@@ -24,14 +27,30 @@ public class FirstActivity extends AppCompatActivity {
                 */
         setContentView(R.layout.activity_first);
 
-        ImageButton imagebtn1 = (ImageButton) findViewById(R.id.imageButton);
+        TextView dailyBoardButton = (TextView) findViewById(R.id.dailyBoardButton);
+        TextView worryBoardButton = (TextView) findViewById(R.id.worryBoardButton);
+        TextView boastBoardButton = (TextView) findViewById(R.id.boastBoardButton);
 
-                imagebtn1.setOnClickListener(new View.OnClickListener() {
+        dailyBoardButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
+                Intent i = new Intent(FirstActivity.this, MainActivity.class);
+                startActivity(i);
+            }
+        });
 
-                Intent i = new Intent
-                        (FirstActivity.this, MainActivity.class);
+        worryBoardButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                Intent i = new Intent(FirstActivity.this, MainActivity.class);
+                startActivity(i);
+            }
+        });
+
+        boastBoardButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                Intent i = new Intent(FirstActivity.this, MainActivity.class);
                 startActivity(i);
             }
         });
